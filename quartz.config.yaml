@@ -1,13 +1,13 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: R · R
-  pageTitleSuffix: " | RR"
+  pageTitle: C · 100 · J
+  pageTitleSuffix: " | C100J"
   enableSPA: true
   enablePopovers: true
   analytics:
     provider: plausible
   locale: pt-BR
-  baseUrl: rener-rannieri.github.io/RR-Site
+  baseUrl: c100j.korux.online
   ignorePatterns:
     - private
     - templates
