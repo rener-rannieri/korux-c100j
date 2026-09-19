@@ -1,26 +1,266 @@
-@use "./variables.scss" as *;
-
-a.internal.internal-link {
-  background-color: rgba(0, 158, 237, 0.20) !important;
-  color: #008cc8;
+/* ==========================================
+   2. TIPOGRAFIA E CONTRASTE DO CORPO
+========================================== */
+/* Força cor mais escura e nítida no texto corrido e listas (evita cinza lavado) */
+.center, 
+.markdown-rendered p, 
+.markdown-rendered li, 
+.markdown-rendered td, 
+.markdown-rendered th {
+  color: #2e3440 !important;
 }
 
-:root[saved-theme="dark"] a.internal.internal-link {
-  color: #9fe8ff;
+/* Cabeçalhos do corpo em tom escuro não absoluto (ex: #111111 ou #0f172a) */
+.markdown-rendered h1,
+.markdown-rendered h2,
+.markdown-rendered h3,
+.markdown-rendered h4,
+.markdown-rendered h5,
+.markdown-rendered h6 {
+  color: #ff439e !important;
 }
 
-.text-highlight {
-  background-color: rgba(255, 242, 54, 0.30) !important;
+/* Títulos principais do artigo no Light Theme */
+.article-title {
+  color: #2b303b !important;
 }
 
-:root[saved-theme="dark"] .text-highlight {
-  background-color: rgba(255, 242, 54, 0.20) !important;
+/* Ajustes específicos para o Dark Theme */
+:root[saved-theme="dark"] .center,
+:root[saved-theme="dark"] .markdown-rendered p,
+:root[saved-theme="dark"] .markdown-rendered li {
+  color: #e2e8f0 !important;
 }
 
-article em {
-  color: #7449ff;
+:root[saved-theme="dark"] .markdown-rendered h1,
+:root[saved-theme="dark"] .markdown-rendered h2,
+:root[saved-theme="dark"] .markdown-rendered h3,
+:root[saved-theme="dark"] .markdown-rendered h4,
+:root[saved-theme="dark"] .markdown-rendered h5,
+:root[saved-theme="dark"] .markdown-rendered h6,
+:root[saved-theme="dark"] .article-title {
+  color: #dff700 !important; /* Verde fluorescente, com contraste no dark */
 }
 
-:root[saved-theme="dark"] article em {
-  color: #b39aff;
+/* Remove a linha inferior dos títulos (padrão de temas como Things) */
+article h1, article h2, article h3, article h4, article h5, article h6 {
+  border-bottom: none !important;
+}
+
+/* Títulos da lateral (Sumário, Visão de Gráfico, Explorador) em Azul Brilhante (ZOOM) */
+.sidebar h2, .sidebar h3 {
+  color: #ff439e !important;
+}
+.sidebar .page-title a {
+  color: #ff439e !important;
+}
+:root[saved-theme="dark"] .sidebar h2,
+:root[saved-theme="dark"] .sidebar h3,
+:root[saved-theme="dark"] .sidebar .page-title a {
+  color: #dff700 !important;
+}
+
+/* ==========================================
+   ESTILIZAÇÃO DE TEXTO (BOLD, ITALIC)
+========================================== */
+/* Bold (Negrito) */
+strong, b {
+  color: #2b303b;
+  font-weight: 700;
+}
+:root[saved-theme="dark"] strong, 
+:root[saved-theme="dark"] b {
+  color: #f8fafc; /* Branco Nord claro para manter o negrito legível */
+}
+
+/* Itálico (Ênfase) */
+article em, article i {
+  color: #4b3274; /* Verde vivo acessível no Light */
+  font-style: italic;
+  font-weight: 600;
+}
+:root[saved-theme="dark"] article em, 
+:root[saved-theme="dark"] article i {
+  color: #52b1f1; /* Ciano (MEETING) no Dark para manter a estética vibrante HUD */
+}
+
+/* ==========================================
+   LINKS (INTERNOS E EXTERNOS)
+========================================== */
+/* Light Mode: Links Rosas */
+a.internal, .markdown-rendered a {
+  background-color: rgba(250, 88, 167, 0.08) !important;
+  color: #ff439e !important; /* Rosa fluorescente da identidade visual */
+  border: 1px solid rgba(250, 88, 167, 0.3);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 0.1em;
+  text-underline-offset: 0.15em;
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+a.internal:hover, .markdown-rendered a:hover {
+  background-color: rgba(250, 88, 167, 0.12) !important;
+  border-color: rgba(250, 88, 167, 0.6);
+  box-shadow: 0 2px 8px rgba(250, 88, 167, 0.12);
+}
+
+/* Backlinks: mantém a cor e remove apenas o sublinhado */
+.backlinks a {
+  text-decoration: none;
+}
+
+/* Dark Mode: Links Verde Florescente */
+:root[saved-theme="dark"] a.internal, 
+:root[saved-theme="dark"] .markdown-rendered a {
+  background-color: rgba(223, 247, 0, 0.1) !important; 
+  color: #dff700 !important; /* Verde Florescente (POISON) */
+  border: 1px solid rgba(223, 247, 0, 0.2);
+}
+
+:root[saved-theme="dark"] a.internal:hover, 
+:root[saved-theme="dark"] .markdown-rendered a:hover {
+  background-color: rgba(223, 247, 0, 0.12) !important;
+  border-color: rgba(223, 247, 0, 0.65);
+  box-shadow: 0 2px 8px rgba(223, 247, 0, 0.15);
+}
+
+/* ==========================================
+   DESTAQUE (HIGHLIGHT)
+========================================== */
+/* Highlight Rosa Florescente (Bem vibrante e marcado) */
+.text-highlight, mark {
+  /* Rosa brilhante com texto escuro para manter a leitura */
+  background-color: rgba(252, 127, 202, 0.25) !important; 
+  color: #2e3440 !important;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+}
+
+/* Dark Mode: Highlight Rosa Florescente */
+:root[saved-theme="dark"] .text-highlight,
+:root[saved-theme="dark"] mark {
+  background-color: rgba(250, 88, 167, 0.22) !important; /* Rosa brilhante e translúcido */
+  color: #f8fafc !important;
+}
+
+/* ==========================================
+   3. TÍTULO DO SITE (HOVER FLORESCENTE)
+========================================== */
+/* Mirando exatamente na tag <h2> com classe .page-title que consta no seu HTML */
+h2.page-title a {
+  color: #ff439e !important; /* Rosa fluorescente da identidade visual */
+  transition: color 0.2s ease, text-shadow 0.2s ease !important;
+}
+
+/* Espaço maior entre breadcrumb e título */
+.breadcrumb-container {
+  margin-bottom: 1rem !important;
+}
+
+.page-header .breadcrumb-container + .article-title,
+.page-header .breadcrumb-container + h1,
+.page-header .breadcrumb-container + h2.page-title {
+  margin-top: 0 !important;
+}
+
+/* Hover no modo Claro: Verde Florescente (POISON) */
+html[saved-theme="light"] h2.page-title a:hover {
+  color: #fa58a7 !important;
+  text-shadow: 0 2px 8px rgba(250, 88, 167, 0.28) !important;
+}
+
+/* Hover no modo Escuro: Rosa Florescente (BUSY) */
+html[saved-theme="dark"] h2.page-title a:hover {
+  color: #dff700 !important;
+  text-shadow: 0 2px 8px rgba(223, 247, 0, 0.3) !important;
+}
+
+/* Dark Mode: título do site em verde, alinhado aos headings */
+html[saved-theme="dark"] h2.page-title a {
+  color: #dff700 !important;
+}
+
+/* ==========================================
+   SELEÇÃO DE TEXTO (ROXO CLARINHO)
+========================================= */
+/* Seleção em modo claro */
+html[saved-theme="light"] ::selection {
+  background-color: rgba(140, 122, 255, 0.35) !important; /* Roxo suave e translúcido */
+  color: inherit !important;
+}
+
+/* Seleção em modo escuro */
+html[saved-theme="dark"] ::selection {
+  background-color: rgba(200, 192, 255, 0.35) !important; /* Roxo suave e translúcido */
+  color: inherit !important;
+}
+
+/* ==========================================
+   1. BLOCKQUOTE TRADICIONAL (> texto)
+========================================= */
+.markdown-rendered blockquote:not(.callout) {
+  /* Fundo rosa leve translúcido */
+  background-color: rgba(220, 255, 172, 0.3) !important; 
+  
+  /* Borda esquerda verde florescente (accent) */
+  border-left: 4px solid #fa58a7 !important; 
+  
+  /* Arredondamento e espaçamento limpos */
+  border-radius: 6px !important;
+  padding: 0.8rem 1.2rem !important;
+  margin: 1.2rem 0 !important;
+  
+  /* Cor do texto interno */
+  color: #2e3440 !important;
+
+  /* ADICIONADO: Itálico e tamanho sutilmente maior */
+  font-style: italic !important;
+  font-size: 1.1rem !important;
+}
+
+.markdown-rendered blockquote:not(.callout) p {
+  margin: 0 !important;
+  color: inherit !important;
+  font-style: inherit !important;
+}
+
+/* Modo escuro para o Blockquote simples */
+:root[saved-theme="dark"] .markdown-rendered blockquote:not(.callout) {
+  background-color: rgba(250, 88, 167, 0.08) !important;
+  border-left-color: #ff439e !important;
+  color: #eff0f2 !important;
+}
+
+/* ==========================================
+   2. CORREÇÃO DAS CALLOUTS (Cor Nativa por Categoria)
+========================================= */
+/* Reseta a cor para o padrão nativo da Callout (Info, Warning, Note, etc.) */
+.callout .callout-title,
+.callout .callout-title p,
+.callout .callout-title-inner {
+  color: var(--color) !important;
+  font-weight: 700 !important;
+}
+
+/* Foco visível para teclado */
+a:focus-visible {
+  outline: 2px solid #a00058;
+  outline-offset: 3px;
+}
+
+/* Em tablet e mobile, empilha os componentes da lateral direita. */
+@media all and (max-width: 1200px) {
+  .page > #quartz-body .sidebar.right {
+    flex-direction: column;
+  }
+}
+
+/* O gráfico ocupa espaço demais em telas estreitas; mantenha os backlinks. */
+@media all and (max-width: 800px) {
+  .page > #quartz-body .sidebar.right > .graph {
+    display: none;
+  }
 }
